@@ -707,6 +707,7 @@ declare namespace Draft {
                 createEntity(type: DraftEntityType, mutability: DraftEntityMutability, data?: Object): ContentState;
                 getEntity(key: string): EntityInstance;
                 getLastCreatedEntityKey(): string;
+                replaceEntityData(key: string, newData: { [key: string]: any }): EntityInstance;
 
                 getBlockMap(): BlockMap;
                 getSelectionBefore(): SelectionState;
@@ -723,6 +724,11 @@ declare namespace Draft {
                 getLastBlock(): ContentBlock;
                 getPlainText(delimiter?: string): string;
                 hasText(): boolean;
+
+                // properties
+                set(key: 'blockMap', value: Map<string, ContentBlock>): ContentState;
+                set(key: 'selectionBefore', value: Map<string, Selection>): ContentState;
+                set(key: 'selectionAfter', value: Map<string, Selection>): ContentState;
             }
 
             class SelectionState extends Record {
